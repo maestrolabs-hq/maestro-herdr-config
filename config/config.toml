@@ -134,3 +134,11 @@ command = "exec \"${SHELL:-sh}\""
 description = "open scratch terminal"
 width = "80%"
 height = "80%"
+
+[[keys.command]]
+key = "prefix+alt+m"
+type = "popup"
+command = "spotify_player"
+description = "spotify player"
+width = "85%"
+height = "85%"
