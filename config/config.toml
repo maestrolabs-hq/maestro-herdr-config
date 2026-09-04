@@ -6,6 +6,11 @@ directory = "~/.herdr/worktrees"
 [ui]
 agent_panel_sort = "priority"
 status_indicators = "symbols"
+tab_bar_right = [
+  { type = "zoom" },
+  { type = "datetime", format = "%H:%M" },
+]
+tab_bar_right_separator = " · "
 
 [ui.toast]
 delivery = "terminal"
@@ -32,6 +37,11 @@ toggle_sidebar = "prefix+shift+b"
 next_agent = "prefix+."
 previous_agent = "prefix+,"
 focus_agent = "prefix+alt+1..9"
+# Candidate default is "prefix+alt+g", but that is the documented example
+# slot for a future lazygit popup; rebound here to keep that slot free.
+open_worktree = "prefix+alt+w"
+remove_worktree = "prefix+alt+d"
+switch_workspace = "prefix+shift+1..9"
 
 # Terminal annotations
 [[keys.command]]
@@ -116,3 +126,11 @@ key = "prefix+d"
 type = "plugin_action"
 command = "persiyanov.reviewr.toggle"
 description = "toggle review pane"
+
+[[keys.command]]
+key = "prefix+space"
+type = "popup"
+command = "exec \"${SHELL:-sh}\""
+description = "open scratch terminal"
+width = "80%"
+height = "80%"
