@@ -1,0 +1,118 @@
+onboarding = false
+
+[worktrees]
+directory = "~/.herdr/worktrees"
+
+[ui]
+agent_panel_sort = "priority"
+status_indicators = "symbols"
+
+[ui.toast]
+delivery = "terminal"
+delay_seconds = 1
+
+[ui.sound]
+enabled = false
+
+[ui.sidebar.agents]
+row_gap = 0
+rows = [
+  ["state_icon", "workspace", "tab", "$pr"],
+  ["agent", "$task"],
+]
+
+[keys]
+# Default is "prefix+shift+n", which collides with the built-in new_workspace
+# binding; rebound here instead.
+open_notification_target = "prefix+shift+i"
+# Default is "prefix+b", now used by the herdr-sidebar plugin_action command
+# below; rebound here to keep the native agent sidebar reachable.
+toggle_sidebar = "prefix+shift+b"
+# prefix+tab / prefix+shift+tab are already cycle_pane_next / cycle_pane_previous.
+next_agent = "prefix+."
+previous_agent = "prefix+,"
+focus_agent = "prefix+alt+1..9"
+
+# Terminal annotations
+[[keys.command]]
+key = "prefix+a"
+type = "plugin_action"
+command = "annotate.capture"
+description = "annotate text"
+
+[[keys.command]]
+key = "prefix+shift+a"
+type = "plugin_action"
+command = "annotate.copy-context"
+description = "copy annotations as context"
+
+[[keys.command]]
+key = "prefix+m"
+type = "plugin_action"
+command = "annotate.manage"
+description = "manage annotations"
+
+# Document review (plannotator-tui)
+[[keys.command]]
+key = "prefix+o"
+type = "plugin_action"
+command = "annotate.open"
+description = "review documents in this folder"
+
+[[keys.command]]
+key = "prefix+shift+o"
+type = "plugin_action"
+command = "annotate.last"
+description = "review the agent's last reply"
+
+[[keys.command]]
+key = "prefix+b"
+type = "shell"
+command = "herdr plugin action invoke open-sidebar --plugin herdr-sidebar"
+description = "toggle herdr-sidebar"
+
+# herdr-navigator
+[[keys.command]]
+key = "prefix+t"
+type = "plugin_action"
+command = "herdr-navigator.open"
+description = "jump to anything"
+
+[[keys.command]]
+# Suggested default is "prefix+l", which collides with the built-in
+# focus_pane_right binding; rebound here.
+key = "prefix+shift+l"
+type = "plugin_action"
+command = "herdr-navigator.jump-back"
+description = "jump to previous workspace"
+
+[[keys.command]]
+# Suggested default is "prefix+shift+t", which collides with the built-in
+# rename_tab binding; rebound here.
+key = "prefix+y"
+type = "plugin_action"
+command = "herdr-navigator.open-side"
+description = "persistent navigator side pane"
+
+# herdr-plugin-gh-pr
+[[keys.command]]
+key = "prefix+u"
+type = "plugin_action"
+command = "gh-pr.open-pr"
+description = "open PR in browser"
+
+[[keys.command]]
+key = "prefix+i"
+type = "plugin_action"
+command = "gh-pr.refresh"
+description = "refresh PR status"
+
+# herdr-reviewr
+[[keys.command]]
+# Suggested default is "cmd+r" (macOS-only chord); rebound here since
+# "prefix+r" is the built-in resize_mode and "prefix+shift+r" is
+# reload_config.
+key = "prefix+d"
+type = "plugin_action"
+command = "persiyanov.reviewr.toggle"
+description = "toggle review pane"
